@@ -6,7 +6,22 @@ require('dotenv').config();
 app.use(express.json());
 
 const cors = require('cors');
-app.use(cors({credentials:true,origin:'http://localhost:3000'}));
+const allowedOrigins = [
+  'http://localhost:3000', 
+  'https://blog-app-chi-pearl.vercel.app', // Add your Vercel domain here
+  // Add other allowed origins as needed
+];
+
+app.use(cors({
+  credentials: true,
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
 
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
