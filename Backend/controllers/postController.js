@@ -6,7 +6,6 @@ require('dotenv').config();
 const secret = process.env.SECRET;
 
 exports.createPost = async (req, res) => {
-  // res.json({files: req.file})
 
   const { originalname, path } = req.file;
   const parts = originalname.split('.');
@@ -31,7 +30,7 @@ exports.createPost = async (req, res) => {
       author: info.id,
     });
 
-    res.json(postDoc);
+    res.status(200).json(postDoc);
   });
 };
 
