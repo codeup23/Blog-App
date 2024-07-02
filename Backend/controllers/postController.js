@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 require('dotenv').config();
 
-const secret = process.env.SECRET;
+const secret = pandey;
 
 exports.createPost = async (req, res) => {
 
