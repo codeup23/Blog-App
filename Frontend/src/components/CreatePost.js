@@ -45,10 +45,9 @@ const CreatePost = () => {
         }
 
         console.log(await response.json());
-    }
-
-    if(redirect){
-        return <Navigate to='/' />
+        if(redirect){
+            return <Navigate to='/' />
+        }
     }
 
   return (
